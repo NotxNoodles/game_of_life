@@ -1,6 +1,13 @@
 import os
 import time
 
+GREEN = "\033[92m"
+RED   = "\033[91m"
+RESET = "\033[0m"
+
+def colored_row(row):
+    return "[" + ", ".join(GREEN + "1" + RESET if c else RED + "0" + RESET for c in row) + "]"
+
 arr_1 = [[0,0,0,0,0,0,0,0,0,0,0],
          [0,0,0,0,0,0,0,0,0,0,0],
          [0,0,0,0,0,0,0,0,0,0,0],
@@ -81,7 +88,7 @@ def updateArray(arr, arr2):
 for j in range(30):
     updateArray(arr_1,arr_2)
     for i in range(len(arr_1)):
-        print(arr_1[i],"\n")
+        print(colored_row(arr_1[i]), "\n")
     time.sleep(.5)
     print('\x1Bc')
     
